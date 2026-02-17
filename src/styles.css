@@ -202,7 +202,7 @@ body {
 }
 
 /* ----------------------------------------
-   List page: top bar (back + chips)
+   List page: top bar (back + tabs) — sticky header
    ---------------------------------------- */
 
 .list-top {
@@ -212,10 +212,12 @@ body {
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #eaeaea;
   background: var(--bg);
-  position: relative;
-  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .list-main {
@@ -228,8 +230,51 @@ body {
   z-index: 1;
 }
 
+/* List page: classic tab bar (replaces chips) */
+.list-tabs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.list-tab {
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #999;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.list-tab:hover {
+  color: #666;
+}
+
+.list-tab-active {
+  color: var(--primary);
+}
+
+.list-tab-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 1px;
+  transition: opacity 0.2s ease;
+}
+
 /* ----------------------------------------
-   Chips
+   Chips (legacy / other use)
    ---------------------------------------- */
 
 .chips {
